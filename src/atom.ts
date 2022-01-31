@@ -3,21 +3,21 @@ import { recoilPersist } from 'recoil-persist';
 
 const { persistAtom } = recoilPersist();
 
-export enum Categories {
-  'TO_DO' = 'TO_DO',
-  'DOING' = 'DOING',
-  'DONE' = 'DONE',
-}
-
 export interface IToDo {
   text: string;
   id: number;
-  category: Categories;
+  category: string;
 }
 
-export const categoryState = atom<Categories>({
+export const categoryState = atom<string>({
   key: 'category',
-  default: Categories.TO_DO,
+  default: 'TO_DO',
+});
+
+export const categoriesState = atom({
+  key: 'categories',
+  default: ['TO_DO', 'DOING', 'DONE'],
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const toDoState = atom<IToDo[]>({
@@ -31,7 +31,6 @@ export const toDoSelector = selector({
   get: ({ get }) => {
     const toDos = get(toDoState);
     const category = get(categoryState);
-    console.log(toDos);
     return toDos.filter((toDo) => toDo.category === category);
   },
 });
