@@ -1,10 +1,20 @@
 import { useForm } from 'react-hook-form';
 import { useSetRecoilState } from 'recoil';
+import styled from 'styled-components';
 import { categoriesState } from '../atom';
+import Input from './Input';
 
 interface IForm {
   category: string;
 }
+
+const Form = styled.form`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 6px;
+`;
 
 const CreateCategory = () => {
   const { register, handleSubmit, setValue } = useForm<IForm>();
@@ -16,14 +26,10 @@ const CreateCategory = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onValid)}>
-      <input
-        type="text"
-        {...register('category', { required: 'Please write a Category' })}
-        placeholder="Write a Category"
-      />
+    <Form onSubmit={handleSubmit(onValid)}>
+      <Input register={register} name={'category'} />
       <button type="submit">Add</button>
-    </form>
+    </Form>
   );
 };
 

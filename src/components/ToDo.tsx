@@ -1,6 +1,13 @@
 import React from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
+import styled from 'styled-components';
 import { categoriesState, IToDo, toDoState } from '../atom';
+
+const List = styled.li`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 function ToDo({ text, category, id }: IToDo) {
   const setToDos = useSetRecoilState(toDoState);
@@ -20,7 +27,7 @@ function ToDo({ text, category, id }: IToDo) {
     });
   };
   return (
-    <li>
+    <List>
       <span>{text}</span>
       {categories.map(
         (item: string) =>
@@ -30,7 +37,7 @@ function ToDo({ text, category, id }: IToDo) {
             </button>
           )
       )}
-    </li>
+    </List>
   );
 }
 
