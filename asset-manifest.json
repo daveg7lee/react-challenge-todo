@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/react-challenge-todo/static/js/main.3c29be1a.js",
+    "index.html": "/react-challenge-todo/index.html",
+    "main.3c29be1a.js.map": "/react-challenge-todo/static/js/main.3c29be1a.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.3c29be1a.js"
+  ]
+}
