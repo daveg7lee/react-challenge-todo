@@ -22,7 +22,7 @@ const Title = styled.h1`
 
 const Select = styled.select`
   border: none;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
   padding: 2px 4px;
   width: 60%;
 `;
